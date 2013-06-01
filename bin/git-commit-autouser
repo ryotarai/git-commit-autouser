@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'git_commit_autouser'
+require 'git_commit_autouser/cli'
+GitCommitAutouser::Cli.start
