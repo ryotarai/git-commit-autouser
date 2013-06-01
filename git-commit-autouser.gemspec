@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = GitCommitAutouser::VERSION
   spec.authors       = ["Ryota Arai"]
   spec.email         = ["ryota.arai@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{git-commit with auto user select}
+  spec.summary       = %q{git-commit with auto user select}
   spec.homepage      = ""
   spec.license       = "MIT"
 
