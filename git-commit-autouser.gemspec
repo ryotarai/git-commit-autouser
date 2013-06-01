@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'git/commit/autouser/version'
+require 'git_commit_autouser/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "git-commit-autouser"
-  spec.version       = Git::Commit::Autouser::VERSION
+  spec.version       = GitCommitAutouser::VERSION
   spec.authors       = ["Ryota Arai"]
   spec.email         = ["ryota.arai@gmail.com"]
   spec.description   = %q{TODO: Write a gem description}
