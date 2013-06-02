@@ -1,66 +1,56 @@
 module GitCommitAutouser
   class Cli
     def self.start(argv=ARGV)
-      remote = `git-remote show -n origin`
-      remote_url = remote.match(/Push  URL: (.+)/)[1]
+      abort_no_origin! unless Git.remote?("origin")
+      remote_url = Git.remote_push_url("origin")
 
-      config = {}
-      `git-config --get-regexp "exuser-.+\."`.split("\n").map do |c|
-        c.split(" ", 2)
-      end.each do |c|
-        data = c.first.match(/exuser-(.+)\.(.+)/)
-        config[data[1]] ||= {}
-        config[data[1]][data[2]] = c.last
-      end
-
-      if config.empty?
-        $stderr.puts <<-EOS
-No user setting found. You should add to ~/.gitconfig like the following.
-------
-[exuser-github]
-    url-regexp = github.com
-    name = "Foo Bar"
-    email = foo@private.com
-[exuser-ghe]
-    url-regexp = git.company.com
-    name = "Foo Bar"
-    email = bar@company.com
-------
-        EOS
-        exit 1
-      end
+      users = Config.users
+      abort_no_user_config! if users.empty?
 
       matched = nil
-      config.each_pair do |name, c|
-        matched = remote_url.match(c["url-regexp"])
-        next if matched.nil?
-        matched = c
-        break
+      users.each do |user|
+        matched = user.url_regexp.match(remote_url)
+        unless matched.nil?
+          matched = user
+          break
+        end
       end
 
-      if matched.nil?
-        $stderr.puts "No user setting matched. Abort."
-        $stderr.puts "Remote Url: #{remote_url}"
-        exit 1
-      end
+      abort_no_user_matched! if matched.nil?
 
-      system "git-commit", *argv
+      system "git", "commit", *argv
+      exit $?.exitstatus unless $?.exitstatus == 0
 
-      unless $?.exitstatus == 0
-        exit $?.exitstatus
-      end
-
-      system <<-EOS
-git-filter-branch -f --commit-filter '
-  GIT_COMMITTER_NAME="#{matched["name"]}";
-  GIT_AUTHOR_NAME="#{matched["name"]}";
-  GIT_COMMITTER_EMAIL="#{matched["email"]}";
-  GIT_AUTHOR_EMAIL="#{matched["email"]}";
-  git commit-tree "$@";
-' HEAD~1..HEAD
-      EOS
-
+      Git.rewrite_committer_author(matched.name, matched.email)
       exit $?.exitstatus
+    end
+
+    def self.abort_no_user_config!
+      $stderr.puts <<-EOS
+No user setting found. You should add to ~/.gitconfig like the following.
+------
+[#{Config::USER_CONFIG_PREFIX}github]
+  url-regexp = github.com
+  name = "Foo Bar"
+  email = foo@private.com
+[#{Config::USER_CONFIG_PREFIX}ghe]
+  url-regexp = git.company.com
+  name = "Foo Bar"
+  email = bar@company.com
+------
+      EOS
+      exit 1
+    end
+
+    def self.abort_no_origin!
+      $stderr.puts "remote `origin` is not configured"
+      exit 1
+    end
+
+    def self.abort_no_user_matched!
+      $stderr.puts "No user setting matched. Abort."
+      $stderr.puts "Remote Url: #{remote_url}"
+      exit 1
     end
   end
 end
