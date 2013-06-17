@@ -13,5 +13,17 @@ module GitCommitAutouser
         it { should be_false }
       end
     end
+
+    describe '.remote_push_url' do
+      subject { in_repo { described_class.remote_push_url(name) } }
+      context 'the existing remote name is passed' do
+        let(:name) { "origin" }
+        it { should == 'origin-url' }
+      end
+      context 'the non-existing remote name is passed' do
+        let(:name) { "invalid" }
+        it { should == 'invalid' }
+      end
+    end
   end
 end

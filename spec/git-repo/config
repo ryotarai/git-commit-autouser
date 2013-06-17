@@ -6,5 +6,5 @@
 	ignorecase = true
 	precomposeunicode = false
 [remote "origin"]
-	url = origin
+	url = origin-url
 	fetch = +refs/heads/*:refs/remotes/origin/*
