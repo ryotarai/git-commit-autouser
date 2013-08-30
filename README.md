@@ -16,6 +16,15 @@ Or install it yourself as:
 
     $ gem install git-commit-autouser
 
+### rbenv, system ruby and specific_install
+
+```
+rbenv shell system
+sudo gem install specific_install
+sudo gem specific_install -l git@github.com:ryotarai/git-commit-autouser.git
+rbenv rehash
+```
+
 ## Usage
 
 TODO: Write usage instructions here
