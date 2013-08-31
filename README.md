@@ -27,7 +27,26 @@ rbenv rehash
 
 ## Usage
 
-TODO: Write usage instructions here
+Add the following settings to .gitconfig:
+
+```
+[autouser-github]
+    url-regexp = github.com
+    name = "Ryota Arai"
+    email = ryota.arai@gmail.com
+[autouser-company]
+    url-regexp = git.company.com
+    name = "Ryota Arai"
+    email = ryota.arai@company.com
+[alias]
+    ci = commit-autouser
+```
+
+Use `git ci` instead of `git commit`:
+
+```
+git ci
+```
 
 ## Contributing
 
