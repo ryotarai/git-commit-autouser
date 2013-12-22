@@ -1,4 +1,4 @@
-# git-commit-autouser
+# git-commit-autouser [![Build Status](https://travis-ci.org/ryotarai/git-commit-autouser.png?branch=master)](https://travis-ci.org/ryotarai/git-commit-autouser)
 
 git-commit-autouser sets name and email of committer and author automatically. The name and email are determined by the url of the remote origin.
 
