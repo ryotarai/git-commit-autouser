@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>git-commit-autouser by ryotarai</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/ryotarai/git-commit-autouser">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/ryotarai/git-commit-autouser/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/ryotarai/git-commit-autouser/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>git-commit-autouser</h1>
+          <p>git-commit with setting committer and author automatically</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/ryotarai">ryotarai</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="git-commit-autouser" class="anchor" href="#git-commit-autouser"><span class="octicon octicon-link"></span></a>git-commit-autouser</h1>
+
+<p>git-commit-autouser sets name and email of committer and author automatically. The name and email are determined by the url of the remote origin.</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<pre><code>$ gem install git-commit-autouser
+</code></pre>
+
+<h3>
+<a name="rbenv-system-ruby-and-specific_install" class="anchor" href="#rbenv-system-ruby-and-specific_install"><span class="octicon octicon-link"></span></a>rbenv, system ruby and specific_install</h3>
+
+<pre><code>rbenv shell system
+sudo gem install specific_install
+sudo gem specific_install -l git@github.com:ryotarai/git-commit-autouser.git
+rbenv rehash
+</code></pre>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Add the following settings to .gitconfig:</p>
+
+<pre><code>[autouser-github]
+    url-regexp = github.com
+    name = "Ryota Arai"
+    email = ryota.arai@gmail.com
+[autouser-company]
+    url-regexp = git.company.com
+    name = "Ryota Arai"
+    email = ryota.arai@company.com
+[alias]
+    ci = commit-autouser
+</code></pre>
+
+<p>Use <code>git ci</code> instead of <code>git commit</code>:</p>
+
+<pre><code>$ git ci
+</code></pre>
+
+<h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
