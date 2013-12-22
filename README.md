@@ -1,20 +1,12 @@
-# Git::Commit::Autouser
+# git-commit-autouser
 
-TODO: Write a gem description
+git-commit-autouser sets name and email of committer and author automatically. The name and email are determined by the url of the remote origin.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'git-commit-autouser'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install git-commit-autouser
+```
+$ gem install git-commit-autouser
+```
 
 ### rbenv, system ruby and specific_install
 
@@ -45,7 +37,7 @@ Add the following settings to .gitconfig:
 Use `git ci` instead of `git commit`:
 
 ```
-git ci
+$ git ci
 ```
 
 ## Contributing
