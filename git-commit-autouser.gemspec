@@ -8,9 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = GitCommitAutouser::VERSION
   spec.authors       = ["Ryota Arai"]
   spec.email         = ["ryota.arai@gmail.com"]
-  spec.description   = %q{git-commit with auto user select}
-  spec.summary       = %q{git-commit with auto user select}
-  spec.homepage      = "https://github.com/ryotarai/git-commit-autouser"
+  spec.summary       = %q{git-commit with setting name and email automatically}
+  spec.homepage      = "http://ryotarai.github.io/git-commit-autouser/"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
