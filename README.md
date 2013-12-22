@@ -8,15 +8,6 @@ git-commit-autouser sets name and email of committer and author automatically. T
 $ gem install git-commit-autouser
 ```
 
-### rbenv, system ruby and specific_install
-
-```
-rbenv shell system
-sudo gem install specific_install
-sudo gem specific_install -l git@github.com:ryotarai/git-commit-autouser.git
-rbenv rehash
-```
-
 ## Usage
 
 Add the following settings to .gitconfig:
