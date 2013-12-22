@@ -18,10 +18,13 @@ module GitCommitAutouser
 
       abort_no_user_matched! if matched.nil?
 
-      system "git", "commit", *argv
-      exit $?.exitstatus unless $?.exitstatus == 0
-
-      Git.rewrite_committer_author(matched.name, matched.email)
+      env = {
+        "GIT_COMMITTER_NAME" => matched.name,
+        "GIT_COMMITTER_EMAIL" => matched.email,
+        "GIT_AUTHOR_NAME" => matched.name,
+        "GIT_AUTHOR_EMAIL" => matched.email,
+      }
+      system env, "git", "commit", *argv
       exit $?.exitstatus
     end
 
