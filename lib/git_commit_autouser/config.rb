@@ -18,8 +18,8 @@ module GitCommitAutouser
           u.url_regexp = Regexp.new(c["url-regexp"])
           u.name = c["name"]
           u.email = c["email"]
-          if c["hub_config"]
-            u.hub_config = File.expand_path(c["hub_config"])
+          if c["hub-config"]
+            u.hub_config = File.expand_path(c["hub-config"])
           end
         end
       end
