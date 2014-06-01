@@ -1,7 +1,7 @@
 module GitCommitAutouser
   class Config
     USER_CONFIG_PREFIX = "autouser-"
-    User = Struct.new(:url_regexp, :name, :email)
+    User = Struct.new(:url_regexp, :name, :email, :hub_config)
 
     def self.users
       config = {}
@@ -18,6 +18,7 @@ module GitCommitAutouser
           u.url_regexp = Regexp.new(c["url-regexp"])
           u.name = c["name"]
           u.email = c["email"]
+          u.hub_config = File.expand_path(c["hub_config"])
         end
       end
     end
