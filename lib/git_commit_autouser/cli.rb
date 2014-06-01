@@ -25,7 +25,7 @@ module GitCommitAutouser
         "GIT_AUTHOR_EMAIL" => matched.email,
       }
 
-      env["HUB_CONFIG"] = matched.hub_config if matched.hub_config
+      env["HUB_CONFIG"] = matched.hub_config
 
       system env, "git", "commit", *argv
       exit $?.exitstatus
